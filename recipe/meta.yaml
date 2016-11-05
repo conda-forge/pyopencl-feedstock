@@ -22,6 +22,7 @@ requirements:
         - numpy
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
+        - mingwpy  # [win]
     run:
         - python
         - numpy

@@ -31,6 +31,7 @@ requirements:
         - mako
         - cffi
         - appdirs
+        - khronos-opencl-icd-loader  # [win]
         - ocl-icd  # [linux]
 
 test:

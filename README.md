@@ -15,6 +15,18 @@ parallel compute devices from Python, through the OpenCL parallel
 compute interface.
 
 
+Current build status
+====================
+
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyopencl-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pyopencl-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyopencl-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyopencl-feedstock)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pyopencl-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pyopencl-feedstock/branch/master)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyopencl/badges/version.svg)](https://anaconda.org/conda-forge/pyopencl)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyopencl/badges/downloads.svg)](https://anaconda.org/conda-forge/pyopencl)
+
 Installing pyopencl
 ===================
 
@@ -35,7 +47,6 @@ It is possible to list all of the versions of `pyopencl` available on your platf
 ```
 conda search pyopencl --channel conda-forge
 ```
-
 
 
 About conda-forge
@@ -71,18 +82,6 @@ Terminology
 
 **conda-forge** - the place where the feedstock and smithy live and work to
                   produce the finished article (built conda distributions)
-
-Current build status
-====================
-
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyopencl-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pyopencl-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyopencl-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyopencl-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
-
-Current release info
-====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyopencl/badges/version.svg)](https://anaconda.org/conda-forge/pyopencl)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyopencl/badges/downloads.svg)](https://anaconda.org/conda-forge/pyopencl)
 
 
 Updating pyopencl-feedstock

@@ -12,8 +12,7 @@ source:
     sha256: {{ sha256 }}
 
 build:
-    number: 0
-    skip: True  # [not (linux or osx)]
+    number: 1
 
 requirements:
     build:
@@ -22,6 +21,8 @@ requirements:
         - cffi
         - numpy
         - ocl-icd  # [linux]
+        - khronos-opencl-icd-loader  # [win]
+        - mingwpy  # [win]
     run:
         - python
         - numpy
@@ -30,6 +31,7 @@ requirements:
         - mako
         - cffi
         - appdirs
+        - khronos-opencl-icd-loader  # [win]
         - ocl-icd  # [linux]
 
 test:

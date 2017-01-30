@@ -39,9 +39,11 @@ test:
         - pytest
     imports:
         - {{ name }}
+    source_files:
+        - test
     commands:
         # Will be able to test on linux as soon as pocl is packaged.
-        - cd $SRC_DIR/test && python -m pytest  # [osx]
+        - cd test && python -m pytest  # [osx]
 
 about:
     home: http://pypi.python.org/pypi/pyopencl

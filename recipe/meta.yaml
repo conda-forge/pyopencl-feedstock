@@ -21,6 +21,7 @@ requirements:
         - cffi
         - numpy
         - ocl-icd  # [linux]
+        - pocl  # [linux]
         - khronos-opencl-icd-loader  # [win]
         - mingwpy  # [win]
     run:
@@ -43,7 +44,7 @@ test:
         - test
     commands:
         # Will be able to test on linux as soon as pocl is packaged.
-        - cd test && python -m pytest  # [osx]
+        - cd test && python -m pytest  # [unix]
 
 about:
     home: http://pypi.python.org/pypi/pyopencl

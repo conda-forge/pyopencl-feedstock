@@ -43,7 +43,7 @@ test:
     source_files:
         - test
     commands:
-        - cd test && python -m pytest  # [unix]
+        - cd test && python -m pytest  # [osx]
 
 about:
     home: http://pypi.python.org/pypi/pyopencl

@@ -43,7 +43,6 @@ test:
     source_files:
         - test
     commands:
-        # Will be able to test on linux as soon as pocl is packaged.
         - cd test && python -m pytest  # [unix]
 
 about:

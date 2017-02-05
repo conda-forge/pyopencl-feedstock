@@ -21,7 +21,6 @@ requirements:
         - cffi
         - numpy
         - ocl-icd  # [linux]
-        - pocl  # [linux]
         - khronos-opencl-icd-loader  # [win]
         - mingwpy  # [win]
     run:
@@ -38,6 +37,7 @@ requirements:
 test:
     requires:
         - pytest
+        - pocl  # [linux]
     imports:
         - {{ name }}
     source_files:

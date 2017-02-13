@@ -13,6 +13,10 @@ fi
 
 if [[ "$platform" == 'linux' || "$OSX_VARIANT" == 'pocl' ]]; then
     ./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib
+elif [[ "$platform" == 'osx' ]]; then
+    if [[ "$OSX_VARIANT" == 'pocl' ]]; then
+        ./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib
+    fi
 fi
 
 python setup.py install --single-version-externally-managed --record record.txt

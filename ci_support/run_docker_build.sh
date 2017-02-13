@@ -43,6 +43,7 @@ source run_conda_forge_build_setup
 
 # Embarking on 1 case(s).
     set -x
+    export OSX_VARIANT=native
     export CONDA_PY=35
     set +x
     conda build /recipe_root --quiet || exit 1

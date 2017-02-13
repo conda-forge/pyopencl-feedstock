@@ -1,6 +1,7 @@
 {% set name = "pyopencl" %}
 {% set version = "2016.2.1" %}
 {% set sha256 = "3fcb59ab9c85e08d96a24388a736cc3d0bbd9608efff96ecb25d3124fde6f4b7" %}
+{% set osx_variant = os.environ.get('OSX_VARIANT', 'default') %}
 
 package:
     name: {{ name|lower }}
@@ -13,6 +14,14 @@ source:
 
 build:
     number: 1
+{% if osx_variant != "native" %}
+    skip: True  # [not osx]
+{% endif %}
+
+{% if osx_variant == "pocl" %}
+    features:
+        - osx_pocl_opencl
+{% endif %}
 
 requirements:
     build:
@@ -23,6 +32,10 @@ requirements:
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
         - mingwpy  # [win]
+{% if osx_variant == "pocl" %}
+        - osx-pocl-opencl
+{% endif %}
+
     run:
         - python
         - numpy
@@ -33,6 +46,9 @@ requirements:
         - appdirs
         - khronos-opencl-icd-loader  # [win]
         - ocl-icd  # [linux]
+{% if osx_variant == "pocl" %}
+        - osx-pocl-opencl
+{% endif %}
 
 test:
     requires:

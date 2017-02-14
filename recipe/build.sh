@@ -18,6 +18,7 @@ elif [[ "$platform" == 'osx' ]]; then
         ./configure.py \
           --cl-inc-dir=$PREFIX/include \
           --cl-lib-dir=$PREFIX/lib \
+          --cl-libname=pocl \
           --cxxflags="-std=gnu++11" \
           --cxxflags="-DPYOPENCL_APPLE_USE_CL_H" \
           --ldflags=""

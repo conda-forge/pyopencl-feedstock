@@ -15,7 +15,12 @@ if [[ "$platform" == 'linux' || "$OSX_VARIANT" == 'pocl' ]]; then
     ./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib
 elif [[ "$platform" == 'osx' ]]; then
     if [[ "$OSX_VARIANT" == 'pocl' ]]; then
-        ./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib
+        ./configure.py \
+          --cl-inc-dir=$PREFIX/include \
+          --cl-lib-dir=$PREFIX/lib \
+          --cxxflags="-std=gnu++11" \
+          --cxxflags="-DPYOPENCL_APPLE_USE_CL_H" \
+          --ldflags=""
     fi
 fi
 

@@ -11,7 +11,7 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
     platform='osx'
 fi
 
-if [[ "$platform" == 'linux' || "$OSX_VARIANT" == 'pocl' ]]; then
+if [[ "$platform" == 'linux' ]]; then
     ./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib
 elif [[ "$platform" == 'osx' ]]; then
     if [[ "$OSX_VARIANT" == 'pocl' ]]; then

@@ -67,10 +67,10 @@ test:
         - {{ name }}
     source_files:
         - test
+
+{# FIXME: Enable tests on OSX POCL build #}
+{% if osx_variant != "pocl" %}
     commands:
-{% if osx_variant == "pocl" %}
-        - cd test && python -m pytest test_wrapper.py  # [osx]
-{% else %}
         - cd test && python -m pytest  # [osx]
 {% endif %}
 

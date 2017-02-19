@@ -68,7 +68,11 @@ test:
     source_files:
         - test
     commands:
+{% if osx_variant == "pocl" %}
+        - cd test && python -m pytest test_wrapper.py  # [osx]
+{% else %}
         - cd test && python -m pytest  # [osx]
+{% endif %}
 
 about:
     home: http://pypi.python.org/pypi/pyopencl

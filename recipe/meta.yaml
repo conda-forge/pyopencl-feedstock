@@ -1,6 +1,7 @@
 {% set name = "pyopencl" %}
 {% set version = "2016.2.1" %}
 {% set sha256 = "3fcb59ab9c85e08d96a24388a736cc3d0bbd9608efff96ecb25d3124fde6f4b7" %}
+{% set osx_variant = os.environ.get('OSX_VARIANT', 'default') %}
 
 package:
     name: {{ name|lower }}
@@ -11,8 +12,23 @@ source:
     url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
     sha256: {{ sha256 }}
 
+{% if osx_variant == "pocl" %}
+    patches:
+    -   allow-direct-linking-to-pocl.patch
+{% endif %}
+
 build:
     number: 1
+    script_env:
+        - OSX_VARIANT
+{% if osx_variant != "native" %}
+    skip: True  # [not osx]
+{% endif %}
+
+{% if osx_variant == "pocl" %}
+    features:
+        - osx_pocl_opencl
+{% endif %}
 
 requirements:
     build:
@@ -23,6 +39,11 @@ requirements:
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
         - mingwpy  # [win]
+{% if osx_variant == "pocl" %}
+        - osx-pocl-opencl
+        - pocl
+{% endif %}
+
     run:
         - python
         - numpy
@@ -33,6 +54,10 @@ requirements:
         - appdirs
         - khronos-opencl-icd-loader  # [win]
         - ocl-icd  # [linux]
+{% if osx_variant == "pocl" %}
+        - osx-pocl-opencl
+        - pocl
+{% endif %}
 
 test:
     requires:
@@ -42,8 +67,12 @@ test:
         - {{ name }}
     source_files:
         - test
+
+{# FIXME: Enable tests on OSX POCL build #}
+{% if osx_variant != "pocl" %}
     commands:
         - cd test && python -m pytest  # [osx]
+{% endif %}
 
 about:
     home: http://pypi.python.org/pypi/pyopencl

@@ -11,8 +11,17 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
     platform='osx'
 fi
 
-if [ "$platform" == 'linux' ]; then
+if [[ "$platform" == 'linux' ]]; then
     ./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib
+elif [[ "$platform" == 'osx' ]]; then
+    if [[ "$OSX_VARIANT" == 'pocl' ]]; then
+        ./configure.py \
+          --cl-inc-dir=$PREFIX/include \
+          --cl-lib-dir=$PREFIX/lib \
+          --cl-libname=pocl \
+          --cxxflags="-std=gnu++11,-DPYOPENCL_LINKED_TO_POCL" \
+          --ldflags=""
+    fi
 fi
 
 python setup.py install --single-version-externally-managed --record record.txt

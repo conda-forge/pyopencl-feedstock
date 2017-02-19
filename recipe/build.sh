@@ -19,8 +19,7 @@ elif [[ "$platform" == 'osx' ]]; then
           --cl-inc-dir=$PREFIX/include \
           --cl-lib-dir=$PREFIX/lib \
           --cl-libname=pocl \
-          --cxxflags="-std=gnu++11" \
-          --cxxflags="-DPYOPENCL_LINKED_TO_POCL" \
+          --cxxflags="-std=gnu++11,-DPYOPENCL_LINKED_TO_POCL" \
           --ldflags=""
     fi
 fi

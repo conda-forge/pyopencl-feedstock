@@ -41,7 +41,7 @@ requirements:
         - mingwpy  # [win]
 {% if osx_variant == "pocl" %}
         - osx-pocl-opencl
-        - pocl >= 0.14
+        - pocl >=0.14
 {% endif %}
 
     run:
@@ -56,13 +56,13 @@ requirements:
         - ocl-icd  # [linux]
 {% if osx_variant == "pocl" %}
         - osx-pocl-opencl
-        - pocl >= 0.14
+        - pocl >=0.14
 {% endif %}
 
 test:
     requires:
         - pytest
-        - pocl  >= 0.14 # [linux]
+        - pocl  >=0.14  # [linux]
     imports:
         - {{ name }}
     source_files:

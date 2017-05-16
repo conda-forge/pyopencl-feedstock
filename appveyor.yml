@@ -35,12 +35,12 @@ environment:
     - TARGET_ARCH: x86
       OSX_VARIANT: native
       CONDA_PY: 36
-      CONDA_INSTALL_LOCN: C:\\Miniconda36
+      CONDA_INSTALL_LOCN: C:\\Miniconda35
 
     - TARGET_ARCH: x64
       OSX_VARIANT: native
       CONDA_PY: 36
-      CONDA_INSTALL_LOCN: C:\\Miniconda36-x64
+      CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
 
 
 # We always use a 64-bit machine, but can build x86 distributions

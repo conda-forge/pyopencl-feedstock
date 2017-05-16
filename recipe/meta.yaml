@@ -38,7 +38,7 @@ requirements:
         - numpy
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
-        - mingwpy  # [win and (py27 or py34 or py35)]
+        - mingwpy  # [win and not py3k]
 {% if osx_variant == "pocl" %}
         - osx-pocl-opencl
         - pocl >=0.14

@@ -15,10 +15,11 @@ if [[ "$platform" == 'linux' ]]; then
     ./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib
 elif [[ "$platform" == 'osx' ]]; then
     if [[ "$OSX_VARIANT" == 'pocl' ]]; then
-        ./configure.py \
+      # -lOpenCL is *not* the default on Apple
+      ./configure.py \
           --cl-inc-dir=$PREFIX/include \
           --cl-lib-dir=$PREFIX/lib \
-          --cl-libname=pocl \
+          --cl-libname=OpenCL \
           --cxxflags="-std=gnu++11,-DPYOPENCL_LINKED_TO_POCL" \
           --ldflags=""
     fi

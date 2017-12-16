@@ -1,0 +1,22 @@
+commit dba6d4fc4568dfe45c9fe9b27c5c6897dd0b0835
+Author: Isuru Fernando <isuruf@gmail.com>
+Date:   Sun Dec 17 03:52:45 2017 +0530
+
+    Fix MSVC 2015 Update 3 ICE
+
+diff --git a/src/c_wrapper/function.h b/src/c_wrapper/function.h
+index 40525a1..5d1a604 100644
+--- a/src/c_wrapper/function.h
++++ b/src/c_wrapper/function.h
+@@ -75,9 +75,11 @@ private:
+     template<template<typename...> class Getter, int... S>
+     PYOPENCL_INLINE auto
+     __get(seq<S...>)
++#ifndef _MSC_VER
+     -> decltype(std::tuple_cat(
+                     ensure_tuple(Getter<ArgConvert<Types> >::get(
+                                      std::get<S>(*(tuple_base*)this)))...))
++#endif
+     {
+         return std::tuple_cat(
+             ensure_tuple(Getter<ArgConvert<Types> >::get(

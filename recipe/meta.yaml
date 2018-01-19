@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2017.2.2" %}
-{% set build_number = "1" %}
-{% set sha256 = "d2f7b04d2e819c6e90d6366b7712a7452a39fba218e51b11b02c85ab07fd2983" %}
+{% set version = "2018.1" %}
+{% set build_number = "0" %}
+{% set sha256 = "b692966bbaaa65ef8949ee25660d6b0cc7cbadc7f4a35eb9c5139dfa4dde6d4a" %}
 {% set osx_variant = os.environ.get('OSX_VARIANT', 'native') %}
 
 package:

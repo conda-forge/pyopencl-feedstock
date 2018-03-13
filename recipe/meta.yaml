@@ -1,6 +1,6 @@
 {% set name = "pyopencl" %}
 {% set version = "2018.1.1" %}
-{% set build_number = "0" %}
+{% set build_number = "1" %}
 {% set sha256 = "29683b47ec729c77a1be4d6fae2bd3718ca4cfcbe14655261a3a14d5bf55530a" %}
 {% set osx_variant = os.environ.get('OSX_VARIANT', 'native') %}
 
@@ -42,7 +42,7 @@ requirements:
         - mingwpy  # [win and not py3k]
 {% if osx_variant == "pocl" %}
         - osx-pocl-opencl
-        - pocl >=0.14
+        - pocl >=1.1
 {% endif %}
 
     run:

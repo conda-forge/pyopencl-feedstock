@@ -42,7 +42,7 @@ requirements:
         - mingwpy  # [win and not py3k]
 {% if osx_variant == "pocl" %}
         - osx-pocl-opencl
-        - pocl >=1.1
+        - pocl >=1.1-1
 {% endif %}
 
     run:

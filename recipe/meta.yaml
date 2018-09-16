@@ -41,7 +41,7 @@ requirements:
         - numpy
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
-        - mingwpy  # [vc<14]
+        - mingwpy  # [win and vc<14]
 {% if osx_variant == "pocl" %}
         - osx-pocl-opencl
         - pocl >=1.1

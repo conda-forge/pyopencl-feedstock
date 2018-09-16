@@ -1,6 +1,6 @@
 {% set name = "pyopencl" %}
 {% set version = "2018.1.1" %}
-{% set build_number = "2" %}
+{% set build_number = "3" %}
 {% set sha256 = "29683b47ec729c77a1be4d6fae2bd3718ca4cfcbe14655261a3a14d5bf55530a" %}
 {% set osx_variant = os.environ.get('OSX_VARIANT', 'native') %}
 
@@ -33,13 +33,15 @@ build:
 
 requirements:
     build:
+        - {{ compiler('cxx') }}
+    host:
         - python
         - setuptools
         - cffi
         - numpy
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
-        - mingwpy  # [win and not py3k]
+        - mingwpy  # [win and vc<14]
 {% if osx_variant == "pocl" %}
         - osx-pocl-opencl
         - pocl >=1.1
@@ -47,7 +49,7 @@ requirements:
 
     run:
         - python
-        - numpy
+        - {{ pin_compatible("numpy") }}
         - pytools
 
         # for pkg_resources
@@ -61,7 +63,7 @@ requirements:
         - ocl-icd  # [linux]
 {% if osx_variant == "pocl" %}
         - osx-pocl-opencl
-        - pocl >=1.1
+        - {{ pin_compatible("pocl") }}
 {% endif %}
 
 test:

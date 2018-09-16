@@ -13,11 +13,6 @@ source:
     url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
     sha256: {{ sha256 }}
 
-{% if osx_variant == "pocl" %}
-    patches:
-    -   allow-direct-linking-to-pocl.patch
-{% endif %}
-
 build:
     number: {{ build_number }}
     script_env:

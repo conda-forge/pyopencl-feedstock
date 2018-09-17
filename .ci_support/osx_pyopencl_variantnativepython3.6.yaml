@@ -16,5 +16,7 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
+pyopencl_variant:
+- native
 python:
-- '3.5'
+- '3.6'

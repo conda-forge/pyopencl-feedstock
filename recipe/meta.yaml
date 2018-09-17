@@ -30,6 +30,8 @@ requirements:
         - mingwpy  # [win and vc<14]
         - osx-pocl-opencl   # [pyopencl_variant == 'pocl']
         - pocl >=1.1    # [pyopencl_variant == 'pocl']
+        - clangdev  # [pyopencl_variant == 'pocl']
+        - libcxx    # [pyopencl_variant == 'pocl']
 
     run:
         - python
@@ -44,6 +46,7 @@ requirements:
         - ocl-icd  # [linux]
         - osx-pocl-opencl   # [pyopencl_variant == 'pocl']
         - {{ pin_compatible("pocl") }}  # [pyopencl_variant == 'pocl']
+        - {{ pin_compatible("libcxx") }}    # [pyopencl_variant == 'pocl']
 
 test:
     requires:

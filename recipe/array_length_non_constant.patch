@@ -1,0 +1,22 @@
+diff --git a/src/wrap_cl.hpp b/src/wrap_cl.hpp
+index 601c3dd..a7c5063 100644
+--- a/src/wrap_cl.hpp
++++ b/src/wrap_cl.hpp
+@@ -1363,7 +1363,7 @@ namespace pyopencl
+                 "may be a crash." << std:: endl;
+           }
+ 
+-          cl_queue_properties props[py::len(py_props) + 1];
++          std::vector<cl_queue_properties> props(py::len(py_props) + 1);
+           {
+             size_t i = 0;
+             for (auto prop: py_props)
+@@ -1374,7 +1374,7 @@ namespace pyopencl
+           cl_int status_code;
+           PYOPENCL_PRINT_CALL_TRACE("clCreateCommandQueueWithProperties");
+           m_queue = clCreateCommandQueueWithProperties(
+-              ctx.data(), dev, props, &status_code);
++              ctx.data(), dev, props.data, &status_code);
+ 
+           if (status_code != CL_SUCCESS)
+             throw pyopencl::error("CommandQueue", status_code);

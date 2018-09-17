@@ -1,7 +1,7 @@
 if "%CONDA_PY%"=="27" (
-  set COMPILER_FLAG=--compiler=mingw32
+  set "COMPILER_FLAG=--compiler=mingw32 --extra_compile_args=-std=c++11"
 ) else if "%CONDA_PY%"=="34" (
-  set COMPILER_FLAG=--compiler=mingw32
+  set "COMPILER_FLAG=--compiler=mingw32 --extra_compile_args=-std=c++11"
 ) else (
   set COMPILER_FLAG=
 )

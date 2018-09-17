@@ -16,6 +16,8 @@ source:
 
 build:
     number: {{ build_number }}
+    features:
+        - osx_pocl_opencl   # [pyopencl_variant == 'pocl']
 
 requirements:
     build:

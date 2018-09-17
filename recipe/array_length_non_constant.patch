@@ -1,5 +1,5 @@
 diff --git a/src/wrap_cl.hpp b/src/wrap_cl.hpp
-index 601c3dd..4ea8c27 100644
+index 601c3dd..1253c49 100644
 --- a/src/wrap_cl.hpp
 +++ b/src/wrap_cl.hpp
 @@ -1363,7 +1363,7 @@ namespace pyopencl
@@ -16,7 +16,7 @@ index 601c3dd..4ea8c27 100644
            PYOPENCL_PRINT_CALL_TRACE("clCreateCommandQueueWithProperties");
            m_queue = clCreateCommandQueueWithProperties(
 -              ctx.data(), dev, props, &status_code);
-+              ctx.data(), dev, props.data, &status_code);
++              ctx.data(), dev, props.data(), &status_code);
  
            if (status_code != CL_SUCCESS)
              throw pyopencl::error("CommandQueue", status_code);

@@ -13,6 +13,7 @@ source:
     sha256: {{ sha256 }}
     patches:
     - pyopencl-stack-container.diff
+    - fix-builtin-kernel-wrapper.diff
 
 build:
     number: {{ build_number }}

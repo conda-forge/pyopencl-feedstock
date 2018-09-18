@@ -1,0 +1,104 @@
+diff --git a/src/wrap_cl.hpp b/src/wrap_cl.hpp
+index 1253c49..9fcea1f 100644
+--- a/src/wrap_cl.hpp
++++ b/src/wrap_cl.hpp
+@@ -90,6 +90,15 @@
+ #endif
+ 
+ 
++#if defined(_WIN32)
++// MSVC does not understand variable-length arrays
++#define PYOPENCL_STACK_CONTAINER(TYPE, NAME, COUNT) std::vector<TYPE> NAME(COUNT)
++#define PYOPENCL_STACK_CONTAINER_GET_PTR(NAME) (name.size() ? name.data() : nullptr)
++#else
++// gcc et al complain about stripping attributes in template arguments
++#define PYOPENCL_STACK_CONTAINER(TYPE, NAME, COUNT) TYPE NAME[COUNT]
++#define PYOPENCL_STACK_CONTAINER_GET_PTR(NAME) NAME
++#endif
+ 
+ // }}}
+ 
+@@ -1363,7 +1372,7 @@ namespace pyopencl
+                 "may be a crash." << std:: endl;
+           }
+ 
+-          std::vector<cl_queue_properties> props(py::len(py_props) + 1);
++          PYOPENCL_STACK_CONTAINER(cl_queue_properties, props, py::len(py_props) + 1);
+           {
+             size_t i = 0;
+             for (auto prop: py_props)
+@@ -1374,7 +1383,7 @@ namespace pyopencl
+           cl_int status_code;
+           PYOPENCL_PRINT_CALL_TRACE("clCreateCommandQueueWithProperties");
+           m_queue = clCreateCommandQueueWithProperties(
+-              ctx.data(), dev, props.data(), &status_code);
++              ctx.data(), dev, PYOPENCL_STACK_CONTAINER_GET_PTR(props), &status_code);
+ 
+           if (status_code != CL_SUCCESS)
+             throw pyopencl::error("CommandQueue", status_code);
+@@ -3610,7 +3619,7 @@ namespace pyopencl
+             "may be a crash." << std:: endl;
+         }
+ 
+-        std::vector<cl_sampler_properties> props(py::len(py_props) + 1);
++        PYOPENCL_STACK_CONTAINER(cl_sampler_properties, props, py::len(py_props) + 1);
+         {
+           size_t i = 0;
+           for (auto prop: py_props)
+@@ -3623,7 +3632,7 @@ namespace pyopencl
+ 
+         m_sampler = clCreateSamplerWithProperties(
+             ctx.data(),
+-            props.data(),
++            PYOPENCL_STACK_CONTAINER_GET_PTR(props),
+             &status_code);
+ 
+         if (status_code != CL_SUCCESS)
+@@ -4005,7 +4014,7 @@ namespace pyopencl
+       sizes.push_back(len);
+     }
+ 
+-    std::vector<cl_int> binary_statuses(num_devices);
++    PYOPENCL_STACK_CONTAINER(cl_int, binary_statuses, num_devices);
+ 
+     cl_int status_code;
+     PYOPENCL_PRINT_CALL_TRACE("clCreateProgramWithBinary");
+@@ -4014,7 +4023,7 @@ namespace pyopencl
+         devices.empty( ) ? nullptr : &devices.front(),
+         sizes.empty( ) ? nullptr : &sizes.front(),
+         binaries.empty( ) ? nullptr : &binaries.front(),
+-        binary_statuses.data(),
++        PYOPENCL_STACK_CONTAINER_GET_PTR(binary_statuses),
+         &status_code);
+     if (status_code != CL_SUCCESS)
+       throw pyopencl::error("clCreateProgramWithBinary", status_code);
+@@ -4037,7 +4046,7 @@ namespace pyopencl
+ 
+ 
+ 
+-#if (PYOPENCL_CL_VERSION >= 0x1020) && \
++#if (PYOPENCL_CL_VERSION >= 0x1020) || \
+       ((PYOPENCL_CL_VERSION >= 0x1030) && defined(__APPLE__))
+   inline
+   program *create_program_with_built_in_kernels(
+diff --git a/src/wrap_cl_part_2.cpp b/src/wrap_cl_part_2.cpp
+index 7b4c2c9..208ea1d 100644
+--- a/src/wrap_cl_part_2.cpp
++++ b/src/wrap_cl_part_2.cpp
+@@ -345,14 +345,13 @@ void pyopencl_expose_part_2(py::module &m)
+           py::arg("context"),
+           py::arg("devices"),
+           py::arg("binaries"))
+-#if (PYOPENCL_CL_VERSION >= 0x1020) && \
++#if (PYOPENCL_CL_VERSION >= 0x1020) || \
+       ((PYOPENCL_CL_VERSION >= 0x1030) && defined(__APPLE__))
+       .def_static("create_with_built_in_kernels",
+           create_program_with_built_in_kernels,
+           py::arg("context"),
+           py::arg("devices"),
+-          py::arg("kernel_names"),
+-          py::return_value_policy<py::manage_new_object>())
++          py::arg("kernel_names"))
+ #endif
+       .DEF_SIMPLE_METHOD(kind)
+       .DEF_SIMPLE_METHOD(get_info)

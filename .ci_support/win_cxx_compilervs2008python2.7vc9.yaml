@@ -12,6 +12,8 @@ pin_run_as_build:
     max_pin: x.x
   vc:
     max_pin: x
+pyopencl_variant:
+- native
 python:
 - '2.7'
 vc:

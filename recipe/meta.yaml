@@ -2,7 +2,6 @@
 {% set version = "2018.2" %}
 {% set build_number = "0" %}
 {% set sha256 = "139aea763d5665c17047dfbfe281960d5a6de29ff504e83de43294c6fafedabe" %}
-{% set osx_variant = os.environ.get('OSX_VARIANT', 'native') %}
 
 package:
     name: {{ name|lower }}
@@ -17,16 +16,8 @@ source:
 
 build:
     number: {{ build_number }}
-    script_env:
-        - OSX_VARIANT
-{% if osx_variant != "native" %}
-    skip: True  # [not osx]
-{% endif %}
-
-{% if osx_variant == "pocl" %}
     features:
-        - osx_pocl_opencl
-{% endif %}
+        - osx_pocl_opencl   # [pyopencl_variant == 'pocl']
 
 requirements:
     build:
@@ -39,28 +30,25 @@ requirements:
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
         - mingwpy  # [win and vc<14]
-{% if osx_variant == "pocl" %}
-        - osx-pocl-opencl
-        - pocl >=1.1
-{% endif %}
+        - osx-pocl-opencl   # [pyopencl_variant == 'pocl']
+        - pocl >=1.1    # [pyopencl_variant == 'pocl']
+        - clangdev  # [pyopencl_variant == 'pocl']
+        - libcxx    # [pyopencl_variant == 'pocl']
 
     run:
         - python
         - {{ pin_compatible("numpy") }}
         - pytools
-
         # for pkg_resources
         - setuptools
-
         - six
         - mako
         - appdirs
         - khronos-opencl-icd-loader  # [win]
         - ocl-icd  # [linux]
-{% if osx_variant == "pocl" %}
-        - osx-pocl-opencl
-        - {{ pin_compatible("pocl") }}
-{% endif %}
+        - osx-pocl-opencl   # [pyopencl_variant == 'pocl']
+        - {{ pin_compatible("pocl") }}  # [pyopencl_variant == 'pocl']
+        - {{ pin_compatible("libcxx") }}    # [pyopencl_variant == 'pocl']
 
 test:
     requires:
@@ -72,10 +60,8 @@ test:
         - test
 
 {# FIXME: Enable tests on OSX POCL build #}
-{% if osx_variant != "pocl" %}
     commands:
-        - cd test && python -m pytest  # [osx]
-{% endif %}
+        - cd test && python -m pytest  # [osx and pyopencl_variant != 'pocl']
 
 about:
     home: http://pypi.python.org/pypi/pyopencl

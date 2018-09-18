@@ -14,6 +14,8 @@ source:
     patches:
     - pyopencl-stack-container.diff
     - fix-builtin-kernel-wrapper.diff
+    - mingw32_flag.diff
+    - cxxflags.patch
 
 build:
     number: {{ build_number }}
@@ -23,14 +25,15 @@ build:
 requirements:
     build:
         - {{ compiler('cxx') }}
+        - {{ compiler('m2w64_cxx') }}  # [win and vc<14]
     host:
         - python
+        - libpython  # [win and vc<14]
         - setuptools
         - pybind11
         - numpy
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
-        - mingwpy  # [win and vc<14]
         - osx-pocl-opencl   # [pyopencl_variant == 'pocl']
         - pocl >=1.1    # [pyopencl_variant == 'pocl']
         - clangdev  # [pyopencl_variant == 'pocl']

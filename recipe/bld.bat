@@ -1,8 +1,6 @@
 if "%CONDA_PY%"=="27" (
-  set "CXXFLAGS=-std=c++11"
   set COMPILER_FLAG=--compiler=mingw32
 ) else if "%CONDA_PY%"=="34" (
-  set "CXXFLAGS=-std=c++11"
   set COMPILER_FLAG=--compiler=mingw32
 ) else (
   set COMPILER_FLAG=

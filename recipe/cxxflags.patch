@@ -1,0 +1,19 @@
+commit 478d342119d0414736a4234e0ffc708268676757
+Author: Andreas Kloeckner <inform@tiker.net>
+Date:   Sun Sep 16 18:41:09 2018 -0500
+
+    Fix cxxflags handling in pybind11 BuildExt
+
+diff --git a/setup.py b/setup.py
+index fcf668b..4666660 100644
+--- a/setup.py
++++ b/setup.py
+@@ -103,7 +103,7 @@ class BuildExt(build_ext):
+         elif ct == 'msvc':
+             opts.append('/DVERSION_INFO=\\"%s\\"' % self.distribution.get_version())
+         for ext in self.extensions:
+-            ext.extra_compile_args = opts
++            ext.extra_compile_args = ext.extra_compile_args + opts
+         build_ext.build_extensions(self)
+ 
+ # }}}

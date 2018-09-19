@@ -1,0 +1,34 @@
+diff --git a/src/wrap_cl.hpp b/src/wrap_cl.hpp
+index e25207c..9fcea1f 100644
+--- a/src/wrap_cl.hpp
++++ b/src/wrap_cl.hpp
+@@ -4046,7 +4046,7 @@ namespace pyopencl
+ 
+ 
+ 
+-#if (PYOPENCL_CL_VERSION >= 0x1020) && \
++#if (PYOPENCL_CL_VERSION >= 0x1020) || \
+       ((PYOPENCL_CL_VERSION >= 0x1030) && defined(__APPLE__))
+   inline
+   program *create_program_with_built_in_kernels(
+diff --git a/src/wrap_cl_part_2.cpp b/src/wrap_cl_part_2.cpp
+index 7b4c2c9..208ea1d 100644
+--- a/src/wrap_cl_part_2.cpp
++++ b/src/wrap_cl_part_2.cpp
+@@ -345,14 +345,13 @@ void pyopencl_expose_part_2(py::module &m)
+           py::arg("context"),
+           py::arg("devices"),
+           py::arg("binaries"))
+-#if (PYOPENCL_CL_VERSION >= 0x1020) && \
++#if (PYOPENCL_CL_VERSION >= 0x1020) || \
+       ((PYOPENCL_CL_VERSION >= 0x1030) && defined(__APPLE__))
+       .def_static("create_with_built_in_kernels",
+           create_program_with_built_in_kernels,
+           py::arg("context"),
+           py::arg("devices"),
+-          py::arg("kernel_names"),
+-          py::return_value_policy<py::manage_new_object>())
++          py::arg("kernel_names"))
+ #endif
+       .DEF_SIMPLE_METHOD(kind)
+       .DEF_SIMPLE_METHOD(get_info)

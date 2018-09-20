@@ -14,7 +14,7 @@ fi
 if [[ "$platform" == 'linux' ]]; then
     ./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib
 elif [[ "$platform" == 'osx' ]]; then
-    if [[ "$OSX_VARIANT" == 'pocl' ]]; then
+    if [[ "$pyopencl_variant" == 'pocl' ]]; then
       # -lOpenCL is *not* the default on Apple
       ./configure.py \
           --cl-inc-dir=$PREFIX/include \

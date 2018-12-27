@@ -28,11 +28,11 @@ requirements:
         - pybind11
         - numpy
         - ocl-icd  # [linux]
-        - khronos-opencl-icd-loader  # [win]
-        - osx-pocl-opencl   # [pyopencl_variant == 'pocl']
+        - khronos-opencl-icd-loader  # [win or osx]
+        - osx-opencl-variant 2.* {{ pyopencl_variant }}   # [osx]
         - pocl >=1.1    # [pyopencl_variant == 'pocl']
-        - clangdev  # [pyopencl_variant == 'pocl']
-        - libcxx    # [pyopencl_variant == 'pocl']
+        - clangdev      # [pyopencl_variant == 'pocl']
+        - libcxx        # [pyopencl_variant == 'pocl']
 
     run:
         - python
@@ -43,10 +43,10 @@ requirements:
         - six
         - mako
         - appdirs
-        - khronos-opencl-icd-loader  # [win]
+        - khronos-opencl-icd-loader  # [win or osx]
         - ocl-icd  # [linux]
-        - osx-pocl-opencl   # [pyopencl_variant == 'pocl']
-        - {{ pin_compatible("pocl") }}  # [pyopencl_variant == 'pocl']
+        - osx-opencl-variant 2.* {{ pyopencl_variant }}   # [osx]
+        - {{ pin_compatible("pocl") }}      # [pyopencl_variant == 'pocl']
         - {{ pin_compatible("libcxx") }}    # [pyopencl_variant == 'pocl']
 
 test:

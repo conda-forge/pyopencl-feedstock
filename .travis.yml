@@ -9,10 +9,18 @@ osx_image: xcode9.4
 
 env:
   matrix:
-    - CONFIG=osx_pyopencl_variantnativepython2.7
-    - CONFIG=osx_pyopencl_variantnativepython3.6
-    - CONFIG=osx_pyopencl_variantpoclpython2.7
-    - CONFIG=osx_pyopencl_variantpoclpython3.6
+    - CONFIG=osx_cxx_compilerclangxxpyopencl_variantnativepython2.7
+    - CONFIG=osx_cxx_compilerclangxxpyopencl_variantnativepython3.6
+    - CONFIG=osx_cxx_compilerclangxxpyopencl_variantnativepython3.7
+    - CONFIG=osx_cxx_compilerclangxxpyopencl_variantpoclpython2.7
+    - CONFIG=osx_cxx_compilerclangxxpyopencl_variantpoclpython3.6
+    - CONFIG=osx_cxx_compilerclangxxpyopencl_variantpoclpython3.7
+    - CONFIG=osx_cxx_compilertoolchain_cxxpyopencl_variantnativepython2.7
+    - CONFIG=osx_cxx_compilertoolchain_cxxpyopencl_variantnativepython3.6
+    - CONFIG=osx_cxx_compilertoolchain_cxxpyopencl_variantnativepython3.7
+    - CONFIG=osx_cxx_compilertoolchain_cxxpyopencl_variantpoclpython2.7
+    - CONFIG=osx_cxx_compilertoolchain_cxxpyopencl_variantpoclpython3.6
+    - CONFIG=osx_cxx_compilertoolchain_cxxpyopencl_variantpoclpython3.7
 
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.

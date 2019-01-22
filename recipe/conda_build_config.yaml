@@ -1,3 +1,0 @@
-pyopencl_variant:
-- native
-- pocl      # [osx]

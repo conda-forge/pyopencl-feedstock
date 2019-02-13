@@ -1,6 +1,6 @@
 {% set name = "pyopencl" %}
 {% set version = "2018.2.2" %}
-{% set build_number = 1001 %}
+{% set build_number = 1002 %}
 {% set sha256 = "419375fb794d97f9bd46f0dc24ce83b5cc83d316771ba82fac80de8bf883dcdc" %}
 
 package:
@@ -11,6 +11,8 @@ source:
     fn: {{ name }}-{{ version }}.tar.gz
     url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
     sha256: {{ sha256 }}
+    patches:
+        - osx_flags.diff
 
 build:
     number: {{ build_number }}

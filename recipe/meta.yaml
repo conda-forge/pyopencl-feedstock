@@ -16,6 +16,8 @@ source:
 
 build:
     number: {{ build_number }}
+    skip: True  # [win]
+
 requirements:
     build:
         - {{ compiler('cxx') }}

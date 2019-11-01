@@ -46,13 +46,14 @@ requirements:
 test:
     requires:
         - pytest
-        - pocl  >=0.14  # [linux]
+        - pocl  >=0.14  # [linux64]
+        - oclgrind  # [ppc64le or aarch64]
     imports:
-        - {{ name }}
+        - pyopencl
     source_files:
         - test
     commands:
-        - cd test && python -m pytest   # [osx]
+        - cd test && python -m pytest   # [unix]
 
 about:
     home: http://pypi.python.org/pypi/pyopencl

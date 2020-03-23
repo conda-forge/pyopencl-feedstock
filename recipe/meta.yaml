@@ -52,7 +52,8 @@ test:
     source_files:
         - test
     commands:
-        - cd test && python -m pytest   # [osx]
+        # apple implementation on 10.14 is buggy. So skip test_can_build_and_run_binary
+        - cd test && python -m pytest -k "not test_can_build_and_run_binary"   # [osx]
 
 about:
     home: http://pypi.python.org/pypi/pyopencl

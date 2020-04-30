@@ -52,7 +52,7 @@ test:
   source_files:
     - test
   commands:
-        # apple implementation on 10.14 is buggy. So skip test_can_build_and_run_binary
+    # apple implementation on 10.14 is buggy. So skip test_can_build_and_run_binary
     - cd test && python -m pytest -k "not test_can_build_and_run_binary"       # [osx]
 
 about:
@@ -62,7 +62,7 @@ about:
   license: MIT
   license_file: LICENSE
   summary: Python wrapper for OpenCL
-  description: |4
+  description: |
 
     PyOpenCL lets you access GPUs, multi-core CPUs, and other massively
     parallel compute devices from Python, through the OpenCL parallel

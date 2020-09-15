@@ -1,0 +1,24 @@
+diff --git a/test/test_array.py b/test/test_array.py
+index d177723..613d2ff 100644
+--- a/test/test_array.py
++++ b/test/test_array.py
+@@ -479,6 +479,9 @@ def test_divide_scalar(ctx_factory):
+     context = ctx_factory()
+     queue = cl.CommandQueue(context)
+ 
++    if queue.device.platform.name == "Apple":
++        pytest.xfail("Apple CL compiler crashes on this.")
++
+     dtypes = (np.uint8, np.uint16, np.uint32,
+                   np.int8, np.int16, np.int32,
+                   np.float32, np.complex64)
+@@ -541,6 +544,9 @@ def test_divide_inplace_scalar(ctx_factory):
+     context = ctx_factory()
+     queue = cl.CommandQueue(context)
+ 
++    if queue.device.platform.name == "Apple":
++        pytest.xfail("Apple CL compiler crashes on this.")
++
+     dtypes = (np.uint8, np.uint16, np.uint32,
+                   np.int8, np.int16, np.int32,
+                   np.float32, np.complex64)

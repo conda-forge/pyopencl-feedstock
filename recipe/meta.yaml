@@ -13,6 +13,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - osx_flags.diff
+    - skip-division-test-on-apple.patch
 
 build:
   number: {{ build_number }}

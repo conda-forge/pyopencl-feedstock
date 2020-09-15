@@ -1,14 +1,14 @@
 diff --git a/setup.py b/setup.py
-index f017021..f71ee21 100644
+index 2bb4252..4d0e392 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -45,30 +45,8 @@ def get_config_schema():
+@@ -43,30 +43,8 @@ def get_config_schema():
              ]
  
-     if 'darwin' in sys.platform:
+     if "darwin" in sys.platform:
 -        import platform
 -        osx_ver, _, _ = platform.mac_ver()
--        osx_ver = '.'.join(osx_ver.split('.')[:2])
+-        osx_ver = ".".join(osx_ver.split(".")[:2])
 -
 -        sysroot_paths = [
 -                "/Applications/Xcode.app/Contents/Developer/Platforms/"
@@ -18,14 +18,14 @@ index f017021..f71ee21 100644
 -
 -        default_libs = []
 -        default_cxxflags = default_cxxflags + [
--                '-stdlib=libc++', '-mmacosx-version-min=10.7',
--                '-arch', 'i386', '-arch', 'x86_64'
+-                "-stdlib=libc++", "-mmacosx-version-min=10.7",
+-                "-arch', 'i386", "-arch", "x86_64"
 -                ]
 -
 -        from os.path import isdir
 -        for srp in sysroot_paths:
 -            if isdir(srp):
--                default_cxxflags.extend(['-isysroot', srp])
+-                default_cxxflags.extend(["-isysroot", srp])
 -                break
 -
 -        default_ldflags = default_cxxflags[:] + ["-Wl,-framework,OpenCL"]

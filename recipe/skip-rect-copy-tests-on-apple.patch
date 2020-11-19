@@ -1,0 +1,24 @@
+diff --git a/test/test_enqueue_copy.py b/test/test_enqueue_copy.py
+index 162e529..55f72d9 100644
+--- a/test/test_enqueue_copy.py
++++ b/test/test_enqueue_copy.py
+@@ -48,6 +48,9 @@ def test_enqueue_copy_rect_2d(ctx_factory, honor_skip=True):
+         # https://github.com/pocl/pocl/issues/353
+         pytest.skip("POCL's rectangular copies crash")
+ 
++    if honor_skip and queue.device.platform.name == "Apple":
++        pytest.skip("Apple's CL implementation crashes on this.")
++
+     ary_in_shp = 256, 128  # Entire array shape from which sub-array copied to device
+     sub_ary_shp = 128, 96  # Sub-array shape to be copied to device
+     ary_in_origin = 20, 13  # Sub-array origin
+@@ -135,6 +138,9 @@ def test_enqueue_copy_rect_3d(ctx_factory, honor_skip=True):
+         # https://github.com/pocl/pocl/issues/353
+         pytest.skip("POCL's rectangular copies crash")
+ 
++    if honor_skip and queue.device.platform.name == "Apple":
++        pytest.skip("Apple's CL implementation crashes on this.")
++
+     ary_in_shp = 256, 128, 31  # array shape from which sub-array copied to device
+     sub_ary_shp = 128, 96, 20  # Sub-array shape to be copied to device
+     ary_in_origin = 20, 13, 7  # Sub-array origin

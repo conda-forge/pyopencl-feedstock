@@ -56,8 +56,8 @@ test:
   source_files:
     - test
   commands:
-    # Apple CL implementation is poor and will crash randomly. Only test the wrapper and not test_can_build_and_run_binary
-    - cd test && python -m pytest -k "not test_can_build_and_run_binary" test_wrapper.py      # [osx]
+    # Apple CL implementation is poor and will crash randomly. Only test the array.
+    - cd test && python -m pytest test_array.py      # [osx]
 
 about:
   home: http://pypi.python.org/pypi/pyopencl

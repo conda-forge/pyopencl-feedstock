@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2020.3" %}
+{% set version = "2020.3.1" %}
 {% set build_number = 0 %}
-{% set sha256 = "4aa3031c17fc99aa2f3018ef2c9e1d535c3cfdc7a01bb987b1ea3826ef42bd59" %}
+{% set sha256 = "abc689307cf34d3dcc94d43815f64e2265469b50ecce6c903a3180589666fb36" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,6 @@ source:
   sha256: {{ sha256 }}
   patches:
     - osx_flags.diff
-    - skip-rect-copy-tests-on-apple.patch
 
 build:
   number: {{ build_number }}

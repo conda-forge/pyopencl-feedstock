@@ -66,8 +66,7 @@ about:
   license: MIT
   license_file: LICENSE
   summary: Python wrapper for OpenCL
-  description: |4
-
+  description: |
     PyOpenCL lets you access GPUs, multi-core CPUs, and other massively
     parallel compute devices from Python, through the OpenCL parallel
     compute interface.

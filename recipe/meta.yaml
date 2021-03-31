@@ -58,6 +58,7 @@ test:
     - test
     - examples/demo.py
   commands:
+    - echo %OCL_ICD_FILENAMES%  # [win]
     - python examples/demo.py
     # Apple CL implementation is poor and will crash randomly. Only test the array.
     - cd test && python -m pytest test_array.py      # [osx]

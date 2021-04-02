@@ -1,6 +1,6 @@
 {% set name = "pyopencl" %}
 {% set version = "2021.1.4" %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% set sha256 = "6a9665e89c15e1c684789263bd3a632567e7c7bd25a657092df4b185b3468971" %}
 
 package:
@@ -51,11 +51,15 @@ test:
   requires:
     - pytest
     - pocl  >=0.14      # [linux]
+    - oclgrind          # [win]
   imports:
     - {{ name }}
   source_files:
     - test
+    - examples/demo.py
   commands:
+    - echo %OCL_ICD_FILENAMES%  # [win]
+    - python examples/demo.py
     # Apple CL implementation is poor and will crash randomly. Only test the array.
     - cd test && python -m pytest test_array.py      # [osx]
 

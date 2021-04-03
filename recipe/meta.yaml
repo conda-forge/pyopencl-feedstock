@@ -40,7 +40,6 @@ requirements:
     - pytools
         # for pkg_resources
     - setuptools
-    - six
     - mako
     - appdirs
     - khronos-opencl-icd-loader      # [win or osx]

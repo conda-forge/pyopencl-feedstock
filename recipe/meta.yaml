@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2021.1.4" %}
-{% set build_number = 1 %}
-{% set sha256 = "6a9665e89c15e1c684789263bd3a632567e7c7bd25a657092df4b185b3468971" %}
+{% set version = "2021.1.5" %}
+{% set build_number = 0 %}
+{% set sha256 = "aaa438b87fbb6d5a185b22666ad0ada5f396a0ac259db95a59620e7900d3b837" %}
 
 package:
   name: {{ name|lower }}
@@ -40,7 +40,6 @@ requirements:
     - pytools
         # for pkg_resources
     - setuptools
-    - six
     - mako
     - appdirs
     - khronos-opencl-icd-loader      # [win or osx]

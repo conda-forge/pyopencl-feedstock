@@ -43,13 +43,12 @@ requirements:
     - mako
     - appdirs
     - khronos-opencl-icd-loader      # [win or osx]
-    - ocl_icd_wrapper_apple      # [osx]
     - ocl-icd      # [linux]
 
 test:
   requires:
     - pytest
-    - pocl  >=0.14      # [linux]
+    - pocl  >=0.14      # [linux or osx]
     - oclgrind          # [win]
   imports:
     - {{ name }}

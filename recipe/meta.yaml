@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2021.1.6" %}
+{% set version = "2021.2.1" %}
 {% set build_number = 0 %}
-{% set sha256 = "b618e8105cdd36df8bd2f511ca9d8e509a12c0f886e5848b12320c4a9dfefbb0" %}
+{% set sha256 = "9138f99a9b3ca7ee4baae23c9e53dc3d02dff5a2f30dbd1c4663af6707e60b67" %}
 
 package:
   name: {{ name|lower }}
@@ -43,13 +43,12 @@ requirements:
     - mako
     - appdirs
     - khronos-opencl-icd-loader      # [win or osx]
-    - ocl_icd_wrapper_apple      # [osx]
     - ocl-icd      # [linux]
 
 test:
   requires:
     - pytest
-    - pocl  >=0.14      # [linux]
+    - pocl  >=0.14      # [linux or osx]
     - oclgrind          # [win]
   imports:
     - {{ name }}

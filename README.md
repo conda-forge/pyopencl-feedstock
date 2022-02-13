@@ -1,7 +1,7 @@
 About pyopencl
 ==============
 
-Home: http://pypi.python.org/pypi/pyopencl
+Home: https://pypi.python.org/pypi/pyopencl
 
 Package license: MIT
 
@@ -9,7 +9,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pyopencl-feedst
 
 Summary: Python wrapper for OpenCL
 
-Development: http://github.com/inducer/pyopencl
+Development: https://github.com/inducer/pyopencl
 
 Documentation: https://documen.tician.de/pyopencl
 
@@ -22,14 +22,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://travis-ci.com/conda-forge/pyopencl-feedstock">
-        <img alt="macOS" src="https://img.shields.io/travis/com/conda-forge/pyopencl-feedstock/master.svg?label=macOS">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
@@ -335,4 +328,5 @@ Feedstock Maintainers
 
 * [@inducer](https://github.com/inducer/)
 * [@isuruf](https://github.com/isuruf/)
+* [@matthiasdiener](https://github.com/matthiasdiener/)
 

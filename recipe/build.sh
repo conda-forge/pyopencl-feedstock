@@ -1,15 +1,6 @@
-set -e
+#!/bin/bash
 
-platform='unknown'
-unamestr="$(uname)"
-
-if [[ "$unamestr" == 'Linux' ]]; then
-    platform='linux'
-elif [[ "$unamestr" == 'FreeBSD' ]]; then
-    platform='freebsd'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-    platform='osx'
-fi
+set -ex
 
 ./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib --cl-libname=OpenCL
 

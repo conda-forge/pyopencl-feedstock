@@ -60,7 +60,7 @@ test:
     # The next test crashes in emulated ppc64le:
     - python examples/demo.py  # [not ppc64le]
     # Apple CL implementation is poor and will crash randomly. Only test the array.
-    - cd test && python -m pytest -vv test_array.py      # [osx]
+    - cd test && python -m pytest -vv --capture=no test_array.py      # [osx]
 
 about:
   home: https://pypi.python.org/pypi/pyopencl

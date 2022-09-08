@@ -57,10 +57,10 @@ test:
     - examples/demo.py
   commands:
     - echo %OCL_ICD_FILENAMES%  # [win]
-    # The next test crashes in emulated ppc64le:
-    - python examples/demo.py  # [not ppc64le]
-    # Apple CL implementation is poor and will crash randomly. Only test the array.
-    - cd test && python -m pytest -vv --capture=no test_array.py      # [osx]
+    - python examples/demo.py
+    - python -m pytest -v --capture=no test/      # [linux]
+    # OSX needs gh-1069 to pass the SVM test
+    - python -m pytest -v -k 'not svm_allocators' --capture=no test/      # [osx]
 
 about:
   home: https://pypi.python.org/pypi/pyopencl

@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2022.1.6" %}
+{% set version = "2022.2" %}
 {% set build_number = 0 %}
-{% set sha256 = "f8887d54e654598f3854472540b2eb228ac56b56a2491b95bdfac8f15be1c943" %}
+{% set sha256 = "b6389581bb289c04b20f93029e5fe4f299eb08d3ea8cb245ab5b92991669f348" %}
 
 package:
   name: {{ name|lower }}
@@ -57,10 +57,10 @@ test:
     - examples/demo.py
   commands:
     - echo %OCL_ICD_FILENAMES%  # [win]
-    # The next test crashes in emulated ppc64le:
-    - python examples/demo.py  # [not ppc64le]
-    # Apple CL implementation is poor and will crash randomly. Only test the array.
-    - cd test && python -m pytest test_array.py      # [osx]
+    - python examples/demo.py
+    # pocl needs gh-1069 to pass the SVM test
+    # tests crash on aarch64/ppc64le
+    - python -m pytest -v -k 'not svm_allocators' test/   # [linux64 or osx]
 
 about:
   home: https://pypi.python.org/pypi/pyopencl

@@ -57,9 +57,8 @@ test:
   commands:
     - echo %OCL_ICD_FILENAMES%  # [win]
     - python examples/demo.py
-    # pocl needs gh-1069 to pass the SVM test
     # tests crash on aarch64/ppc64le
-    - python -m pytest -v -k 'not svm_allocators' test/   # [linux64 or osx]
+    - python -m pytest -v test/   # [linux64 or osx]
 
 about:
   home: https://pypi.python.org/pypi/pyopencl

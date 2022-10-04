@@ -48,7 +48,7 @@ test:
   requires:
     - pytest
     - pocl  >=0.14      # [linux or osx]
-    - intel-opencl-rt   # [win]
+    - intel-opencl-rt   # [win64 or linux64]
   imports:
     - {{ name }}
   source_files:

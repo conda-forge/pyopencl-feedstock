@@ -58,7 +58,7 @@ test:
     - echo %OCL_ICD_FILENAMES%  # [win]
     - python examples/demo.py
     # tests crash on aarch64/ppc64le
-    - python -m pytest -v test/ -k not test_slice   # [not (linux and (aarch64 or ppc64le))]
+    - python -m pytest -v test/ -k "not test_slice"   # [not (linux and (aarch64 or ppc64le))]
 
 about:
   home: https://pypi.python.org/pypi/pyopencl

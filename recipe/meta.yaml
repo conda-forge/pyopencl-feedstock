@@ -12,6 +12,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - osx_flags.diff
+    - KernelWithCustomEnqueue.diff
 
 build:
   number: {{ build_number }}

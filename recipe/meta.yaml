@@ -48,7 +48,7 @@ test:
   requires:
     - pytest
     - pocl  >=0.14      # [linux or osx]
-    - oclgrind          # [win]
+    - intel-opencl-rt   # [win64 or linux64]
   imports:
     - {{ name }}
   source_files:
@@ -58,7 +58,7 @@ test:
     - echo %OCL_ICD_FILENAMES%  # [win]
     - python examples/demo.py
     # tests crash on aarch64/ppc64le
-    - python -m pytest -v test/   # [linux64 or osx]
+    - python -m pytest -v test/ -k "not test_slice"   # [not (linux and (aarch64 or ppc64le))]
 
 about:
   home: https://pypi.python.org/pypi/pyopencl

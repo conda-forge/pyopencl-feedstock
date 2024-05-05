@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2024.1" %}
+{% set version = "2024.2" %}
 {% set build_number = 0 %}
-{% set sha256 = "ecd572ee940ad8bda1639c3a7beb68834fc9a98ad7eb3f6e01aac4f7d9d4bac1" %}
+{% set sha256 = "3d63a701983aa60a6c2195d7384653290f809775ac384aac34906ae80cb7002e" %}
 
 package:
   name: {{ name|lower }}
@@ -24,6 +24,7 @@ requirements:
     - pybind11                               # [build_platform != target_platform]
     - {{ compiler('cxx') }}
     - {{ compiler('m2w64_cxx') }}      # [win and vc<14]
+    - {{ stdlib("c") }}        # [win and vc<14]
   host:
     - python
     - libpython      # [win and vc<14]

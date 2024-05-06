@@ -54,6 +54,8 @@ test:
     - pytest
     - pocl  >=0.14      # [linux or osx]
     - oclgrind          # [win]
+    # See https://github.com/conda-forge/pocl-feedstock/pull/96:
+    - ld64 <711         # [osx]
   imports:
     - {{ name }}
   source_files:

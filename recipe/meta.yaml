@@ -24,7 +24,7 @@ requirements:
     - cmake
     - {{ compiler('cxx') }}
     - {{ compiler('m2w64_cxx') }}      # [win and vc<14]
-    - {{ stdlib("c") }}        # [win and vc<14]
+    - {{ stdlib("c") }}
   host:
     - python
     - libpython      # [win and vc<14]

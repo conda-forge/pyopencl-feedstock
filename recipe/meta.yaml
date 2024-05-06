@@ -19,7 +19,8 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
-    - nanobind                               # [build_platform != target_platform]
+    - nanobind >=1.9.2                       # [build_platform != target_platform]
+    - scikit-build                           # [build_platform != target_platform]
     - cmake
     - {{ compiler('cxx') }}
     - {{ compiler('m2w64_cxx') }}      # [win and vc<14]
@@ -28,7 +29,8 @@ requirements:
     - python
     - libpython      # [win and vc<14]
     - setuptools
-    - nanobind
+    - nanobind >=1.9.2
+    - scikit-build
     - numpy
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]

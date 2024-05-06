@@ -10,8 +10,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - osx_flags.diff
 
 build:
   number: {{ build_number }}
@@ -21,7 +19,8 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
-    - pybind11                               # [build_platform != target_platform]
+    - nanobind                               # [build_platform != target_platform]
+    - cmake
     - {{ compiler('cxx') }}
     - {{ compiler('m2w64_cxx') }}      # [win and vc<14]
     - {{ stdlib("c") }}        # [win and vc<14]
@@ -29,7 +28,7 @@ requirements:
     - python
     - libpython      # [win and vc<14]
     - setuptools
-    - pybind11
+    - nanobind
     - numpy
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]

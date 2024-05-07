@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2024.2" %}
+{% set version = "2024.2.1" %}
 {% set build_number = 0 %}
-{% set sha256 = "3d63a701983aa60a6c2195d7384653290f809775ac384aac34906ae80cb7002e" %}
+{% set sha256 = "54660b8904f4cf89acd9ee20575d4357d51809662b52a6cfa386aa2cfed6c7d2" %}
 
 package:
   name: {{ name|lower }}
@@ -10,8 +10,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - cmake.diff
 
 build:
   number: {{ build_number }}

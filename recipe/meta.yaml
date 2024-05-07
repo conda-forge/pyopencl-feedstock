@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2024.1" %}
+{% set version = "2024.2.1" %}
 {% set build_number = 0 %}
-{% set sha256 = "ecd572ee940ad8bda1639c3a7beb68834fc9a98ad7eb3f6e01aac4f7d9d4bac1" %}
+{% set sha256 = "54660b8904f4cf89acd9ee20575d4357d51809662b52a6cfa386aa2cfed6c7d2" %}
 
 package:
   name: {{ name|lower }}
@@ -10,8 +10,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - osx_flags.diff
 
 build:
   number: {{ build_number }}
@@ -21,14 +19,17 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
-    - pybind11                               # [build_platform != target_platform]
+    - nanobind >=1.9.2                       # [build_platform != target_platform]
+    - scikit-build                           # [build_platform != target_platform]
+    - cmake
     - {{ compiler('cxx') }}
-    - {{ compiler('m2w64_cxx') }}      # [win and vc<14]
+    - {{ stdlib("c") }}
+    - make  # [unix]
   host:
     - python
-    - libpython      # [win and vc<14]
     - setuptools
-    - pybind11
+    - nanobind >=1.9.2
+    - scikit-build
     - numpy
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
@@ -49,6 +50,8 @@ test:
     - pytest
     - pocl  >=0.14      # [linux or osx]
     - oclgrind          # [win]
+    # See https://github.com/conda-forge/pocl-feedstock/pull/96:
+    - ld64 <711         # [osx]
   imports:
     - {{ name }}
   source_files:

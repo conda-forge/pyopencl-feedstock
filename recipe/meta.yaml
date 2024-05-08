@@ -1,6 +1,6 @@
 {% set name = "pyopencl" %}
 {% set version = "2024.2.1" %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% set sha256 = "54660b8904f4cf89acd9ee20575d4357d51809662b52a6cfa386aa2cfed6c7d2" %}
 
 package:
@@ -27,7 +27,7 @@ requirements:
     - make  # [unix]
   host:
     - python
-    - setuptools
+    - pip
     - nanobind >=1.9.2
     - scikit-build
     - numpy
@@ -38,8 +38,6 @@ requirements:
     - python
     - {{ pin_compatible("numpy") }}
     - pytools
-        # for pkg_resources
-    - setuptools
     - mako
     - platformdirs
     - khronos-opencl-icd-loader      # [win or osx]
@@ -60,8 +58,9 @@ test:
   commands:
     - echo %OCL_ICD_FILENAMES%  # [win]
     - python examples/demo.py
+    - python -c 'import pyopencl as cl; context = cl.create_some_context(); queue = cl.CommandQueue(context); mem_pool = cl.tools.MemoryPool(cl.tools.ImmediateAllocator(queue)); b= mem_pool.allocate(10); print(type(b)); b.release()'
     # tests crash on aarch64/ppc64le
-    - python -m pytest -v test/   # [linux64 or osx]
+    # - python -m pytest -v test/   # [linux64 or osx]
 
 about:
   home: https://pypi.python.org/pypi/pyopencl

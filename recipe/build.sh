@@ -6,4 +6,10 @@ set -ex
 
 cat siteconf.py
 
-python setup.py install --single-version-externally-managed --record record.txt
+# python setup.py install --single-version-externally-managed --record record.txt
+
+export CXXFLAGS=-O2
+
+export VERBOSE=1
+
+$PYTHON -m pip install . -vv --no-deps --no-build-isolation

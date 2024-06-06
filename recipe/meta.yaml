@@ -20,16 +20,17 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - nanobind >=1.9.2                       # [build_platform != target_platform]
-    - scikit-build                           # [build_platform != target_platform]
+    - scikit-build-core >=0.9.3              # [build_platform != target_platform]
     - cmake
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - make  # [unix]
   host:
     - python
+    - pip
     - setuptools
     - nanobind >=1.9.2
-    - scikit-build
+    - scikit-build-core >=0.9.3
     - numpy
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]

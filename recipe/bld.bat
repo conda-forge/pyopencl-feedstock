@@ -5,7 +5,10 @@ if "%CONDA_PY%"=="27" (
 ) else (
   set COMPILER_FLAG=
 )
-"%PYTHON%" configure.py --cl-inc-dir=%LIBRARY_INC% --cl-lib-dir=%LIBRARY_LIB%
+
+set CL_INC_DIR=%LIBRARY_INC%
+set CL_LIB_DIR=%LIBRARY_LIB%
+
 if errorlevel 1 exit 1
 "%PYTHON%" setup.py build %COMPILER_FLAG%
 if errorlevel 1 exit 1

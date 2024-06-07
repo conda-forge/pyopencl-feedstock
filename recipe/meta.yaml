@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2024.2.2" %}
+{% set version = "2024.2.5" %}
 {% set build_number = 0 %}
-{% set sha256 = "be6f6535de310a3166e4a8fb606a615b7cf3412cdb05353127ac194cf852f4c0" %}
+{% set sha256 = "788f7bb9a94f992fb747a7098a011f86c520323f194701948e2834371b9b3267" %}
 
 package:
   name: {{ name|lower }}
@@ -20,16 +20,17 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - nanobind >=1.9.2                       # [build_platform != target_platform]
-    - scikit-build                           # [build_platform != target_platform]
+    - scikit-build-core >=0.9.3              # [build_platform != target_platform]
     - cmake
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - make  # [unix]
   host:
     - python
+    - pip
     - setuptools
     - nanobind >=1.9.2
-    - scikit-build
+    - scikit-build-core >=0.9.3
     - numpy
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]

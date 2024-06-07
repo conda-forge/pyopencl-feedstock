@@ -2,8 +2,8 @@
 
 set -ex
 
-./configure.py --cl-inc-dir=$PREFIX/include --cl-lib-dir=$PREFIX/lib --cl-libname=OpenCL
+export CL_INC_DIR=$PREFIX/include
+export CL_LIB_DIR=$PREFIX/lib
+export CL_LIBNAME=OpenCL
 
-cat siteconf.py
-
-python setup.py install --single-version-externally-managed --record record.txt
+$PYTHON -m pip install . -vv

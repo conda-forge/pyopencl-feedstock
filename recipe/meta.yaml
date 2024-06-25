@@ -1,6 +1,6 @@
 {% set name = "pyopencl" %}
 {% set version = "2024.2.6" %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% set sha256 = "ceb9beeef0b6162e601c05922fede29b5094554a66eb473c610cabc14308ba82" %}
 
 package:
@@ -37,7 +37,6 @@ requirements:
 
   run:
     - python
-    - {{ pin_compatible("numpy") }}
     - pytools
         # for pkg_resources
     - setuptools

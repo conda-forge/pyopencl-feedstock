@@ -1,6 +1,6 @@
 {% set name = "pyopencl" %}
 {% set version = "2025.1" %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% set sha256 = "0116736d7f7920f87b8db4b66a03f27b1d930d2e37ddd14518407cc22dd24779" %}
 
 package:
@@ -32,18 +32,12 @@ requirements:
     - nanobind >=1.9.2
     - scikit-build-core >=0.9.3
     - numpy
-    - ocl-icd      # [linux]
-    - khronos-opencl-icd-loader      # [win or osx]
-
+    - libopencl-devel
   run:
     - python
     - pytools
-        # for pkg_resources
-    - setuptools
     - mako
     - platformdirs
-    - khronos-opencl-icd-loader      # [win or osx]
-    - ocl-icd      # [linux]
 
 test:
   requires:

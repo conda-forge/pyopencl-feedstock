@@ -36,8 +36,6 @@ requirements:
   run:
     - python
     - pytools
-    # for pkg_resources
-    - setuptools
     - mako
     - platformdirs
 

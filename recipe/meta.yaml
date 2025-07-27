@@ -1,7 +1,7 @@
 {% set name = "pyopencl" %}
-{% set version = "2025.2.5" %}
+{% set version = "2025.2.6" %}
 {% set build_number = 0 %}
-{% set sha256 = "eab75b8b15c45c8cafe938759b9a82f1da62eb1c57ef7bc04bce21fcbb60f485" %}
+{% set sha256 = "874d94078a25df5d6c8b6d1db9c37d65feff3837b7afd7e2db9717e91fac01fd" %}
 
 package:
   name: {{ name|lower }}

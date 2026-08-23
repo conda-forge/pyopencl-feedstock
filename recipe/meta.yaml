@@ -1,14 +1,14 @@
 {% set name = "pyopencl" %}
-{% set version = "2026.1.1" %}
+{% set version = "2026.1.3" %}
 {% set build_number = 0 %}
-{% set sha256 = "114197542f4fcee633b50d155812e2f4e2f91e05ed27c09e0cc75ce9f22d5c1a" %}
+{% set sha256 = "000d69015eed087f9f9ef18c9eb90cedd125dda05b4c871d79457d136c5dc00c" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
